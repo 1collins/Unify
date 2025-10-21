@@ -1,6 +1,3 @@
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,474 +5,59 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Unico Kitchen — Recipes, Shop & Gas</title>
 <style>
-  :root{
-    --accent:#ff6b35;
-    --muted:#666;
-    --bg:#fafafa;
-    --card:#fff;
-    --radius:10px;
-    --tab-gap:8px;
-    --icon-size:44px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#111;-webkit-font-smoothing:antialiased}
-  header{background:var(--card);padding:8px 12px;box-shadow:0 2px 8px rgba(0,0,0,.06);position:sticky;top:0;z-index:220}
-  .container{max-width:1024px;margin:0 auto;padding:6px}
-  .header-row{display:flex;align-items:center;gap:12px}
-  .brand{font-weight:800;color:var(--accent);font-size:18px}
-  /* ICON BAR (upper-side icons) */
-  .icon-bar{display:flex;gap:8px;align-items:center;margin-left:12px}
-  .icon-button{
-    width:var(--icon-size);height:var(--icon-size);display:flex;align-items:center;justify-content:center;border-radius:10px;
-    background:transparent;border:1px solid transparent;cursor:pointer;padding:6px;color:#333;
-  }
-  .icon-button svg{width:22px;height:22px;display:block}
-  .icon-button.active{background:#fff;border-color:#eee;box-shadow:0 6px 22px rgba(0,0,0,.04)}
-  .icon-button[title]{position:relative}
-  .icon-label{display:block;font-size:11px;text-align:center;color:var(--muted);margin-top:4px}
-  .tabs{margin-left:12px;display:flex;gap:var(--tab-gap);align-items:center}
-  .tab{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:12px;cursor:pointer;user-select:none;font-weight:700;color:#333;background:transparent;border:1px solid transparent}
-  .tab svg{width:20px;height:20px;flex:0 0 20px}
-  .tab span.label{font-size:14px}
-  .tab .badge{background:var(--accent);color:#fff;font-size:11px;padding:2px 6px;border-radius:999px;margin-left:6px}
-  .tab.active{background:#fff;border:1px solid #eee;box-shadow:0 6px 22px rgba(0,0,0,.04)}
-  .actions{margin-left:auto;display:flex;gap:8px;align-items:center}
-  .count{background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
-  button{cursor:pointer;border:none;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700}
-  .ghost{background:#fff;color:#111;border:1px solid #eee;padding:8px 10px;border-radius:8px}
-  main{padding:18px 12px 80px 12px}
-  h2{margin:0 0 8px 0}
-  .note{color:var(--muted);font-size:13px;margin-bottom:10px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-  .card{background:var(--card);padding:12px;border-radius:var(--radius);box-shadow:0 6px 22px rgba(0,0,0,.04);overflow:hidden}
-  .card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
-  .buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-  .hidden{display:none}
-  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-  .shop-item img{height:120px;width:100%;object-fit:cover;border-radius:8px}
-  .cart-panel{position:fixed;right:16px;bottom:16px;background:var(--card);padding:12px;border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.14);width:360px;max-height:72vh;overflow:auto;z-index:240}
-  .ingredient-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #f0f0f0}
-  footer{padding:16px;text-align:center;color:var(--muted);font-size:13px}
-  input[type=number]{padding:6px;border:1px solid #eee;border-radius:6px}
-  .meta{color:var(--muted);font-size:13px;margin-top:6px}
-  .qty-controls{display:inline-flex;align-items:center;gap:6px}
-  .icon-btn{background:#fff;border:1px solid #eee;padding:6px;border-radius:8px;cursor:pointer}
-  .tab-wrap{overflow:auto;padding-bottom:6px}
-  .shop-top { display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px }
-  .shop-search { flex:1; display:flex; gap:8px; align-items:center }
-  input.search { width:100%; padding:8px;border-radius:8px;border:1px solid #eee }
-  .price { font-weight:800; color:#111 }
-  @media (max-width:820px){
-    .grid{grid-template-columns:1fr}
-    .shop-grid{grid-template-columns:1fr 1fr}
-    .tabs{margin-left:8px}
-    .cart-panel{width:92%;right:4%}
-    .icon-bar{display:flex;gap:6px}
-  }
-  @media (max-width:420px){
-    .shop-grid{grid-template-columns:1fr}
-    .icon-button{width:40px;height:40px}
-  }
+  :root { --accent:#ff6b35; --muted:#666; --bg:#fafafa }
+  * { box-sizing:border-box; margin:0; padding:0; font-family:'Poppins', sans-serif }
+  body { background:var(--bg); color:#222; line-height:1.5 }
+  header { background:var(--accent); color:#fff; padding:1rem; text-align:center; font-size:1.4rem; font-weight:bold }
+  nav { display:flex; justify-content:space-around; background:#fff; border-bottom:1px solid #ddd }
+  nav button { flex:1; padding:0.8rem; background:none; border:none; font-weight:600; cursor:pointer }
+  nav button.active { color:var(--accent); border-bottom:3px solid var(--accent) }
+  section { display:none; padding:1rem }
+  section.active { display:block }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:1rem }
+  .card { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center }
+  .card img { width:100%; height:120px; object-fit:cover }
+  .card h3 { font-size:1rem; margin:0.5rem 0 }
+  .card p { color:var(--muted); margin-bottom:0.5rem }
+  .btn { display:inline-block; background:var(--accent); color:#fff; border:none; padding:0.4rem 0.8rem; border-radius:5px; cursor:pointer }
+  footer { text-align:center; padding:1rem; font-size:0.9rem; color:var(--muted) }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container header-row">
-    <div style="display:flex;align-items:center;gap:12px">
-      <img id="logo" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=60" alt="logo" style="width:56px;height:56px;border-radius:10px;object-fit:cover">
-      <div>
-        <div class="brand">Unico Kitchen</div>
-        <small class="note">You cook — we follow (recipes, e.shop & gas)</small>
-      </div>
-    </div>
+<header>Unico Kitchen — Recipes, Shop & Gas</header>
 
-    <!-- ICON BAR (upper side icons) -->
-    <div class="icon-bar" aria-hidden="false" role="toolbar" title="Quick actions">
-      <!-- Recipes icon -->
-      <button class="icon-button active" data-tab="recipes" id="icon-recipes" title="Recipes (tap to open recipes)" aria-label="Recipes" tabindex="0">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M7 3v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M17 3v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 11h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 21h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </button>
+<nav>
+  <button class="tab active" data-target="recipes">Recipes</button>
+  <button class="tab" data-target="shop">Shop</button>
+  <button class="tab" data-target="gas">Gas</button>
+</nav>
 
-      <!-- Shop icon -->
-      <button class="icon-button" data-tab="shop" id="icon-shop" title="Shop / e.shop (tap to open shop)" aria-label="Shop" tabindex="0">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M3 6h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 6l1 14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </button>
+<section id="recipes" class="active">
+  <h2>Easy Student Recipes 🍚</h2>
+  <p>Cook fast, eat fresh! Simple meals in minutes.</p>
+  <ul>
+    <li>Pilau Rice — Spiced and ready in 20 mins</li>
+    <li>Chapati — Soft and golden flatbread</li>
+    <li>Egg Curry — Protein boost in a pan</li>
+    <li>Ugali & Sukuma — Kenyan classic for energy</li>
+  </ul>
+</section>
 
-      <!-- Gas icon -->
-      <button class="icon-button" data-tab="gas" id="icon-gas" title="Gas (tap to open gas)" aria-label="Gas" tabindex="0">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M12 3v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 9h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M6 21h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="7" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/></svg>
-      </button>
+<section id="shop">
+  <h2>🛒 Student Grocery Store</h2>
+  <div class="grid" id="shopGrid"></div>
+</section>
 
-      <!-- WhatsApp Order icon (submits cart) -->
-      <button class="icon-button" id="icon-whatsapp" title="Send order (WhatsApp)" aria-label="Send order via WhatsApp" tabindex="0">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M21 11.5A9.5 9.5 0 1111.5 2 9.5 9.5 0 0121 11.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.2 10.7c.5 1.3 1.8 2.4 3.6 2.8.6.2 1.1.2 1.7.1.4-.1.9-.2 1.4-.3.6-.1 1.4 0 1.9.5.3.3.5.8.4 1.3-.2.9-.9 1.8-1.9 2.2-1.2.5-2.5.5-3.8.3-2.7-.4-5-2.4-6.1-4.8-.9-2.2-.6-4.6.8-6.5.2-.3.5-.6.9-.5.2 0 .4.1.6.2.4.2.8.5 1.1.8.3.3.5.7.8 1z" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      </button>
-    </div>
+<section id="gas">
+  <h2>⛽ Order Gas for Delivery</h2>
+  <p>Never run out of gas again! 6kg, 13kg, or 22kg refills available.</p>
+  <button class="btn" onclick="orderGas()">Order Gas on WhatsApp</button>
+</section>
 
-    <div class="actions">
-      <div id="cartCount" class="count" aria-live="polite">0</div>
-      <button id="openCartBtn" class="ghost" title="Open cart">Cart</button>
-      <button id="sendOrderHeader" class="ghost" title="Send order via WhatsApp">Send Order</button>
-      <button id="sendPlanHeader" class="ghost" title="Send planned recipes">Send Plan</button>
-    </div>
-  </div>
-</header>
-
-<main class="container" id="mainContent">
-  <!-- RECIPES -->
-  <section id="recipes" class="tab-panel" aria-labelledby="tab-recipes">
-    <h2>All Recipes</h2>
-    <div class="note">Tap an icon or the tabs to switch pages. Click "Cook (WhatsApp)" to send a recipe. Edit minutes for each recipe in the code.</div>
-    <div id="recipesGrid" class="grid" style="margin-top:12px"></div>
-  </section>
-
-  <!-- SHOP (e.shop) -->
-  <section id="shop" class="tab-panel hidden" aria-labelledby="tab-shop">
-    <h2>e.Shop — Buy Ingredients</h2>
-    <div class="note">Add shop items (priced) to the cart. Use the quantity controls to pick how many you want.</div>
-
-    <!-- shop top: search & quick filters -->
-    <div class="shop-top">
-      <div class="shop-search">
-        <input id="shopSearch" class="search" placeholder="Search products (rice, oil, noodles...)" />
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button id="filterAll" class="ghost">All</button>
-        <button id="filterFood" class="ghost">Food</button>
-      </div>
-    </div>
-
-    <div id="shopGrid" class="shop-grid" style="margin-top:12px"></div>
-  </section>
-
-  <!-- GAS -->
-  <section id="gas" class="tab-panel hidden" aria-labelledby="tab-gas">
-    <h2>Gas Tokens</h2>
-    <div style="background:var(--card);padding:12px;border-radius:12px">
-      <p class="note">Each gas token = 1 minute. Price per token shown below.</p>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <label>Tokens: <input id="gasQty" type="number" min="1" value="1" style="width:80px"></label>
-        <div>Price/token: <strong id="tokenPrice">50</strong> KES</div>
-        <button id="addGas">Add to cart</button>
-      </div>
-      <div style="margin-top:8px">Estimated: <strong id="gasTotal">50</strong> KES</div>
-    </div>
-  </section>
-
-  <!-- FRIDGE -->
-  <section id="fridge" class="tab-panel hidden" aria-labelledby="tab-fridge">
-    <h2>Your Fridge</h2>
-    <div class="note">Saved ingredients (no prices). Click "View in shop" to jump to the shop item.</div>
-    <div id="fridgeList" style="margin-top:12px"></div>
-  </section>
-</main>
-
-<!-- CART PANEL -->
-<div id="cartPanel" class="cart-panel" style="display:none" aria-live="polite">
-  <h3 style="margin:0 0 8px">Cart</h3>
-  <div id="cartItems"></div>
-  <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-    <div><strong>Total:</strong> <span id="cartTotal">0</span> KES</div>
-    <div style="display:flex;gap:8px">
-      <button id="clearCart" class="ghost">Clear</button>
-      <button id="sendCart">Send Order</button>
-    </div>
-  </div>
-</div>
-
-<footer>Built for Unico Kitchen — edit logo, phone, recipes and shop items in the JS below.</footer>
+<footer>© 2025 Unico Kitchen | Helping Students Cook Smart</footer>
 
 <script>
-/* =========== CONFIG =============
-   WhatsApp number (international, no +) for wa.me — user provided 0798459336
-   Kenya international format: 254798459336
-*/
-const CONFIG = {
-  PHONE: '254798459336',
-  TOKEN_PRICE: 50
-};
-
-/* =========== DATA ===========
-   Recipes include minutes (editable). Shop items priced.
-*//* ============================
-   RECIPES — REPLACED PER YOUR LIST
-   (Only recipes changed here. Shop prices left as is.)
-   If you have local photos, upload them to repo/images/ and keep filenames below.
-   ============================ */
-const recipes = [
-  {
-    id: 'beef-pilau',
-    title: 'Beef Pilau',
-    image: 'https://img-global.cpcdn.com/recipes/1b7f76052ea23f19/300x426cq80/beef-pilau-recipe-main-photo.webp',
-    ingredients: [
-      {name: '2 cups rice', shopId: 'rice1'},
-      {name: '150 g boiled beef'},
-      {name: 'Pilau masala'},
-      {name: '2 large chopped onion', shopId: 'onion1'},
-      {name: '2 tbs garlic paste'},
-      {name: '1 tbs ginger paste'},
-      {name: '3 tbs cooking oil', shopId: 'oil1'},
-      {name: '4 cups boiled water / bone broth'},
-      {name: 'Salt'}
-    ],
-    steps: [
-      'In a pan add the cooking oil and the chopped onions.',
-      'Cook until lightly brown, add ginger and garlic paste.',
-      'Cook until golden brown; add boiled beef, pilau masala, salt and rice.',
-      'Add bone broth / water and cook under low heat until rice is done.',
-      'Serve and enjoy. (Serve with kachumbari and ripe banana.)',
-      'Note: the brown colour comes from golden onions, not the pilau masala.'
-    ],
-    time: '1 hr'
-  },
-
-  {
-    id: 'chicken-potato-curry',
-    title: 'Chicken & Potato Curry',
-    image: 'https://img-global.cpcdn.com/recipes/3456f5862a69e922/300x426cq80/chicken-and-potato-curry-recipe-main-photo.webp',
-    ingredients: [
-      {name: '500 g chicken (thighs or breasts)'},
-      {name: '2-4 medium potatoes, peeled & cubed'},
-      {name: '1 large onion, chopped', shopId: 'onion1'},
-      {name: '2 garlic cloves, minced'},
-      {name: '1-inch ginger, grated'},
-      {name: '2 tbs curry powder'},
-      {name: '1 tsp turmeric powder'},
-      {name: '1 tsp cumin seeds (optional)'},
-      {name: '1 can (400 ml) coconut milk'},
-      {name: '1 cup chicken broth or water'},
-      {name: 'Salt & pepper to taste'},
-      {name: 'Fresh coriander for garnish'}
-    ],
-    steps: [
-      'Prep ingredients: cut chicken, cube potatoes, chop onion, mince garlic, grate ginger.',
-      'Heat oil, add cumin seeds to sizzle, add onion and sauté until golden.',
-      'Stir in garlic, ginger and chilies. Add curry powder & turmeric; toast 30s.',
-      'Add chicken, brown 5-7 min. Add potatoes, coconut milk and broth; season.',
-      'Simmer 20-25 min until potatoes tender and chicken cooked.',
-      'Garnish with coriander and serve with rice/ugali/chapati.'
-    ],
-    time: '45 min'
-  },
-
-  {
-    id: 'swahili-chicken-biryani',
-    title: 'Swahili Chicken Biryani',
-    image: 'https://img-global.cpcdn.com/recipes/9c1df591132918a4/300x426cq80/swahili-chicken-biryani-recipe-main-photo.webp',
-    ingredients: [
-      {name: '1.5 kg chicken'},
-      {name: '4 cans crushed tomatoes (or 8-10 fresh tomatoes)'},
-      {name: '2 small cans tomato paste'},
-      {name: '4 large onions', shopId: 'onion1'},
-      {name: '1 tsp ginger & garlic paste'},
-      {name: '1 tbsp ghee or cooking oil', shopId: 'oil1'},
-      {name: '1/2 glass plain yoghurt'},
-      {name: '6 eggs'},
-      {name: '3 cups basmati rice', shopId: 'rice1'},
-      {name: 'bay leaf, thyme, cinnamon, green cardamom pods'},
-      {name: 'Salt & spices'}
-    ],
-    steps: [
-      'Wash and soak rice 30 min. Par-boil rice and drain.',
-      'Boil eggs, peel and set aside. Brown onions in oil and set aside.',
-      'Make tomato sauce: cook crushed tomatoes and paste until oil rises.',
-      'Spice sauce with garam masala, biryani masala, turmeric, coriander, stock cubes.',
-      'Add boiled chicken to sauce with yoghurt, simmer until tender.',
-      'Layer par-cooked rice and sauce; bake or steam covered until fully cooked.',
-      'Mix gently, add boiled eggs and garnish with coriander.'
-    ],
-    time: '1 hr 25 min'
-  },
-
-  {
-    id: 'ugali-greens-pork',
-    title: 'Ugali, Greens & Pork',
-    image: 'https://img-global.cpcdn.com/recipes/765a241811a7d3e2/300x426f0.5_0.5_1.0q80/ugaligreens-pork-recipe-main-photo.webp',
-    ingredients: [
-      {name: '300 g maize flour (for ugali)', shopId: 'maize1'},
-      {name: '4 bunches kales / spinach', shopId: 'veg1'},
-      {name: '1/2 kg pork'},
-      {name: '1 onion', shopId: 'onion1'},
-      {name: '2 tomatoes'},
-      {name: '1 bunch coriander'},
-      {name: 'Spices: black pepper, ginger, cayenne, salt'}
-    ],
-    steps: [
-      'Clean pork; simmer to reduce excess water and partially cook.',
-      'Add onion, garlic and spices; cook until flavours blend.',
-      'Add tomatoes and mchuzi mix; simmer a few minutes.',
-      'Stir in chopped coriander and serve with ugali and steamed greens.'
-    ],
-    time: '1 hr'
-  },
-
-  {
-    id: 'ugali-basic',
-    title: 'Ugali (Basic)',
-    image: 'https://img-global.cpcdn.com/recipes/260568fdfcdfb88c/300x426cq80/ugali-recipe-main-photo.webp',
-    ingredients: [
-      {name: 'Maize flour', shopId: 'maize1'},
-      {name: 'Water'}
-    ],
-    steps: [
-      'Boil water in a deep pan.',
-      'Add maize flour slowly while stirring vigorously with a wooden spoon.',
-      'Cook until firm, press against sides to break lumps and cook 2-3 more minutes.',
-      'Turn out and serve.'
-    ]
-  },
-
-  {
-    id: 'ugali-steamed-kales',
-    title: 'Ugali & Steamed Kales',
-    image: 'https://img-global.cpcdn.com/recipes/e75d4cb3bdc30c85/300x426cq80/ugali-and-steamed-kales-recipe-main-photo.webp',
-    ingredients: [
-      {name: 'Hostess maize flour (1 cup)', shopId: 'maize1'},
-      {name: 'Kales', shopId: 'veg1'},
-      {name: 'Cooking oil'},
-      {name: 'Salt'}
-    ],
-    steps: [
-      'Boil water, add flour gradually until desired thickness.',
-      'Cook 10 minutes and set aside.',
-      'Heat oil, add sliced kales, cover and steam 10 minutes.',
-      'Serve with ugali.'
-    ]
-  },
-
-  {
-    id: 'ugali-liver',
-    title: 'Ugali, Steamed Kales & Liver',
-    image: 'https://img-global.cpcdn.com/recipes/96ba99b07919d352/300x426cq80/ugali-steamed-kales-and-liver-recipe-main-photo.webp',
-    ingredients: [
-      {name: 'Ready ugali'},
-      {name: 'Kales', shopId: 'veg1'},
-      {name: '1 tomato'},
-      {name: '1 onion', shopId: 'onion1'},
-      {name: 'Cooking oil'}
-    ],
-    steps: [
-      'Steam kales.',
-      'Fry onion until golden, add tomato and cook.',
-      'Add pre-boiled liver and simmer 8 minutes, serve.'
-    ]
-  },
-
-  {
-    id: 'ugali-omena-sukuma',
-    title: 'Ugali, Omena & Sukuma',
-    image: 'https://img-global.cpcdn.com/recipes/0a6a9c2483569e48/300x426cq80/githeri-recipe-main-photo.webp',
-    ingredients: [
-      {name: '250 g maize flour', shopId: 'maize1'},
-      {name: '1/4 kg omena'},
-      {name: '2 tomatoes'},
-      {name: 'Onions'},
-      {name: 'Kales', shopId: 'veg1'},
-      {name: 'Spices & oil'}
-    ],
-    steps: [
-      'Prepare ugali as usual.',
-      'Clean and dry-fry omena, then fry with onions and tomatoes.',
-      'Cook sukuma (kales) separately and serve alongside.'
-    ]
-  },
-
-  {
-    id: 'ugali-mayai-kales',
-    title: 'Ugali, Mayai & Steamed Kales',
-    image: 'https://img-global.cpcdn.com/recipes/35761b2bdf0b5b67/300x426cq80/ugali-mayai-na-steamed-kales-recipe-main-photo.webp',
-    ingredients: [
-      {name: 'Maize flour', shopId: 'maize1'},
-      {name: '2 eggs'},
-      {name: '1 tomato'},
-      {name: '1 medium onion', shopId: 'onion1'},
-      {name: 'Kales', shopId: 'veg1'}
-    ],
-    steps: [
-      'Prepare ugali.',
-      'Fry onion, add tomato then beaten eggs and cook.',
-      'Steam kales for 5 minutes, serve.'
-    ]
-  },
-
-  {
-    id: 'scrambled-eggs-ugali',
-    title: 'Scrambled Eggs & Ugali',
-    image: 'https://img-global.cpcdn.com/recipes/bc0b2ad7cde408b3/300x426cq80/scrambled-eggsugali-endofyearchallenge-recipe-main-photo.webp',
-    ingredients: [
-      {name: '4 eggs'},
-      {name: '2 cubes Royco (stock)'},
-      {name: '1 onion', shopId: 'onion1'},
-      {name: '2 tomatoes'},
-      {name: '2 tsp cooking oil', shopId: 'oil1'},
-      {name: 'Salt'}
-    ],
-    steps: [
-      'Chop onion and tomato. Fry onion until golden.',
-      'Add tomato, salt, stock cubes; simmer.',
-      'Add beaten eggs and stir until cooked. Serve with ugali.'
-    ],
-    time: '10 min'
-  },
-
-  {
-    id: 'eggless-pancakes',
-    title: 'Eggless & Dairy-Free Fluffy Pancakes',
-    image: 'https://img-global.cpcdn.com/recipes/ac58ac365ffce444/300x426f0.512567_0.5_1.0q80/eggless-and-dairy-free-fluffy-pancakes-recipe-main-photo.webp',
-    ingredients: [
-      {name: '2 cups all-purpose flour', shopId: 'flour1'},
-      {name: '4 tbsp sugar'},
-      {name: '4 tsp baking powder'},
-      {name: '1/2 tsp salt'},
-      {name: '2 cups water'},
-      {name: '4 tbsp oil', shopId: 'oil1'},
-      {name: '2 tsp vanilla (optional)'}
-    ],
-    steps: [
-      'Whisk dry ingredients, add water, oil and vanilla; rest 5 minutes.',
-      'Cook 1/4 cup batter per pancake until bubbles form, flip and cook until golden.'
-    ]
-  },
-
-  {
-    id: 'blueberry-mini-pancakes',
-    title: 'Eggless Blueberry Mini Pancakes',
-    image: 'https://img-global.cpcdn.com/recipes/d7ac2ef1bd4e54ab/300x426cq80/eggless-blueberry-mini-pancakes-recipe-main-photo.webp',
-    ingredients: [
-      {name: '1.5 cups flour', shopId: 'flour1'},
-      {name: '2 tsp baking powder'},
-      {name: '2 tbsp oil', shopId: 'oil1'},
-      {name: '1 cup milk'},
-      {name: '1/8 cup blueberries'}
-    ],
-    steps: [
-      'Mix ingredients, rest 5 min. Spoon batter onto pan and cook 2-3 minutes each side.',
-      'Serve warm with tea.'
-    ],
-    time: '25 min'
-  },
-
-  {
-    id: 'chicken-stew',
-    title: 'Chicken Stew',
-    image: 'https://images.unsplash.com/photo-1546069901-eacef0df6022?w=1200&q=60',
-    ingredients: [
-      {name: 'Half chicken', shopId: 'chicken1'},
-      {name: 'Spices: ginger, garlic, chicken masala, black pepper, soy sauce'},
-      {name: 'Onions, carrots, capsicum, courgette'},
-      {name: '200 ml water'}
-    ],
-    steps: [
-      'Clean chicken and marinate with spices; fry until golden.',
-      'Add onions and other vegetables; add water and simmer 1–1.5 hours until tender.',
-      'Serve with chapati, rice or ugali.'
-    ],
-    time: '1 hr 30 min'
-  }
-];
-
 const shopItems = [
   { id:'rice1', name:'Basmati Rice 2kg', price:200, image:'https://raw.githubusercontent.com/1collins/image/e88660bef9ec7d9770d55454ac4a1157a51ecca2/collins%20var/IMG-20251020-WA0001.jpg' },
   { id:'pilau-spice', name:'Pilau Masala 100g', price:60, image:'https://raw.githubusercontent.com/1collins/image/e88660bef9ec7d9770d55454ac4a1157a51ecca2/collins%20var/IMG-20251020-WA0002.jpg' },
@@ -489,321 +71,39 @@ const shopItems = [
   { id:'noodles1', name:'Instant noodles (1pc)', price:70, image:'https://raw.githubusercontent.com/1collins/image/e88660bef9ec7d9770d55454ac4a1157a51ecca2/collins%20var/IMG-20251020-WA0015.jpg' },
   { id:'veg1', name:'Mixed veg 500g', price:120, image:'https://raw.githubusercontent.com/1collins/image/e88660bef9ec7d9770d55454ac4a1157a51ecca2/collins%20var/IMG-20251020-WA0016.jpg' }
 ];
-   
 
-  
+const shopGrid = document.getElementById('shopGrid');
+shopGrid.innerHTML = shopItems.map(item => `
+  <div class="card">
+    <img src="${item.image}" alt="${item.name}">
+    <h3>${item.name}</h3>
+    <p>KES ${item.price}</p>
+    <button class="btn" onclick="orderItem('${item.name}', ${item.price})">Buy</button>
+  </div>
+`).join('');
 
-
-
-];
-
-/* =========== STATE ===========
-   persisted in localStorage for simple usage
-*/
-const state = {
-  cart: JSON.parse(localStorage.getItem('uk_cart') || '[]'),
-  fridge: JSON.parse(localStorage.getItem('uk_fridge') || '[]'),
-  planned: JSON.parse(localStorage.getItem('uk_planned') || '[]'),
-  tokenPrice: Number(localStorage.getItem('uk_tokenPrice') || CONFIG.TOKEN_PRICE)
-};
-
-/* =========== HELPERS =========== */
-function saveState(){
-  localStorage.setItem('uk_cart', JSON.stringify(state.cart));
-  localStorage.setItem('uk_fridge', JSON.stringify(state.fridge));
-  localStorage.setItem('uk_planned', JSON.stringify(state.planned));
-  localStorage.setItem('uk_tokenPrice', String(state.tokenPrice));
-  renderCart(); renderFridge(); renderCartCount();
+function orderItem(name, price) {
+  const message = `Hello! I'd like to order ${name} for KES ${price}.`;
+  window.open(`https://wa.me/254798459336?text=${encodeURIComponent(message)}`, '_blank');
 }
-function findShopById(id){ return shopItems.find(s=>s.id===id) }
-function escapeHtml(text){ return String(text||'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
-function blink(el){ if(!el) return; el.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:250}); }
 
-/* =========== RENDERING =========== */
-function renderRecipes(){
-  const el = document.getElementById('recipesGrid'); el.innerHTML = '';
-  recipes.forEach(r=>{
-    const card = document.createElement('div'); card.className='card';
-    const ingHtml = r.ingredients.map(i=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #f3f3f3"><div>${escapeHtml(i.name)}</div><div>${i.shopId ? `<button class="ghost" onclick="addToFridge('${escapeHtml(i.name)}','${i.shopId}')">Save</button>` : ''}</div></div>`).join('');
-    card.innerHTML = `
-      <img src="${r.image}" alt="${escapeHtml(r.title)}">
-      <h3 style="margin:8px 0 4px 0">${escapeHtml(r.title)}</h3>
-      <div class="meta">Estimated minutes: <strong>${escapeHtml(String(r.minutes||'—'))}</strong></div>
-      <div class="buttons" style="margin-top:8px">
-        <button class="ghost" onclick="toggleDetails('${r.id}')">View ingredients & steps</button>
-        <button class="ghost" onclick="planRecipe('${r.id}', this)">Plan</button>
-        <button onclick="sendRecipeWhatsApp('${r.id}', this)">Cook (WhatsApp)</button>
-        <button class="ghost" onclick="addRecipeIngredientsToCart('${r.id}')">Add ingredients → Shop</button>
-      </div>
-      <div id="details-${r.id}" class="hidden" style="margin-top:12px">
-        <strong>Ingredients</strong>
-        ${ingHtml}
-        <strong style="display:block;margin-top:8px">Steps</strong>
-        <ol style="margin:6px 0 0 18px">${r.steps.map(s=>`<li>${escapeHtml(s)}</li>`).join('')}</ol>
-      </div>
-    `;
-    el.appendChild(card);
+function orderGas() {
+  const message = "Hello! I'd like to order a gas refill (6kg/13kg/22kg).";
+  window.open(`https://wa.me/254798459336?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.target).classList.add('active');
   });
-}
-
-function renderShop(filter ){
-  const el = document.getElementById('shopGrid'); el.innerHTML = '';
-  const q = (document.getElementById('shopSearch')?.value || '').toLowerCase();
-  const items = shopItems.filter(s=>{
-    if(filter && filter!=='all') return s.category === filter;
-    if(!q) return true;
-    return s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q);
-  });
-  items.forEach(s=>{
-    const card = document.createElement('div'); card.className='card shop-item'; card.id = 'shop-' + s.id;
-    card.innerHTML = `
-      <img src="${s.image}" alt="${escapeHtml(s.name)}">
-      <h4 style="margin:8px 0 4px 0">${escapeHtml(s.name)}</h4>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-        <div class="price">KES ${s.price}</div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <div class="qty-controls" title="Quantity">
-            <button class="icon-btn" aria-label="Decrease" onclick="changeShopQty('${s.id}', -1)">-</button>
-            <input type="number" id="qty-${s.id}" value="1" min="1" style="width:52px;padding:6px;border-radius:6px;border:1px solid #eee;text-align:center">
-            <button class="icon-btn" aria-label="Increase" onclick="changeShopQty('${s.id}', 1)">+</button>
-          </div>
-          <button onclick="addShopToCart('${s.id}', this)">Add to cart</button>
-        </div>
-      </div>
-    `;
-    el.appendChild(card);
-  });
-}
-
-function renderFridge(){
-  const el = document.getElementById('fridgeList'); el.innerHTML = '';
-  if(state.fridge.length === 0){ el.innerHTML = '<div class="card">Your fridge is empty.</div>'; return; }
-  state.fridge.forEach((f, idx)=>{
-    const c = document.createElement('div'); c.className='card';
-    c.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div><strong>${escapeHtml(f.name)}</strong><div class="meta">Saved ingredient</div></div><div><button class="ghost" onclick="goToShop('${f.shopId}')">View in shop</button></div></div>`;
-    el.appendChild(c);
-  });
-}
-
-function renderCart(){
-  const el = document.getElementById('cartItems'); el.innerHTML = '';
-  if(state.cart.length === 0){ el.innerHTML = '<div class="card">Cart is empty</div>'; document.getElementById('cartTotal').innerText = 0; return; }
-  let total = 0;
-  state.cart.forEach((c, idx)=>{
-    const row = document.createElement('div'); row.className='card'; row.style.display='flex'; row.style.justifyContent='space-between'; row.style.alignItems='center'; row.style.marginBottom='8px';
-    row.innerHTML = `<div style="max-width:60%">${escapeHtml(c.name)} <div class="meta">x ${c.qty} unit(s)</div></div><div style="text-align:right">KES ${c.price * c.qty}<div style="margin-top:6px"><button class="ghost" onclick="removeCartItem(${idx})">Remove</button></div></div>`;
-    el.appendChild(row);
-    total += c.price * c.qty;
-  });
-  document.getElementById('cartTotal').innerText = total;
-}
-
-function renderCartCount(){
-  const cnt = state.cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cartCount').innerText = cnt;
-}
-
-/* =========== ACTIONS =========== */
-function toggleDetails(id){
-  const el = document.getElementById('details-' + id);
-  if(!el) return;
-  el.classList.toggle('hidden');
-}
-
-function planRecipe(id, btn){
-  if(!state.planned.includes(id)) state.planned.push(id);
-  saveState();
-  blink(btn);
-}
-
-function sendRecipeWhatsApp(id, btn){
-  const r = recipes.find(x=>x.id===id); if(!r) return;
-  const lines = [];
-  lines.push(`Hello! I want to cook *${r.title}* (${r.minutes ? r.minutes + ' min' : '—'}).`);
-  lines.push('');
-  lines.push('Ingredients:');
-  r.ingredients.forEach(i => lines.push(`- ${i.name}`));
-  lines.push('');
-  lines.push('Steps:');
-  r.steps.slice(0,10).forEach((s,i)=> lines.push(`${i+1}. ${s}`));
-  blink(btn);
-  window.open(`https://wa.me/${CONFIG.PHONE}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
-}
-
-function addRecipeIngredientsToCart(id){
-  const r = recipes.find(x=>x.id===id); if(!r) return;
-  r.ingredients.forEach(i=>{
-    if(i.shopId){
-      const s = findShopById(i.shopId);
-      if(s){
-        const existing = state.cart.find(c=>c.id === s.id);
-        if(existing) existing.qty++;
-        else state.cart.push({ id: s.id, name: s.name, price: s.price, qty: 1 });
-      }
-    }
-  });
-  saveState();
-}
-
-function addToFridge(name, shopId){
-  if(!state.fridge.find(f=>f.name===name && f.shopId===shopId)) state.fridge.push({ name, shopId });
-  saveState();
-  switchTab('shop');
-  setTimeout(()=> {
-    const el = document.getElementById('shop-' + shopId);
-    if(el){
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      el.animate([{boxShadow:'0 8px 30px rgba(255,107,53,.18)'},{boxShadow:''}],{duration:900});
-    }
-  }, 300);
-}
-
-function goToShop(shopId){
-  switchTab('shop');
-  setTimeout(()=> {
-    const el = document.getElementById('shop-' + shopId);
-    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 200);
-}
-
-function changeShopQty(shopId, delta){
-  const input = document.getElementById('qty-'+shopId);
-  if(!input) return;
-  let v = Number(input.value) || 1;
-  v += delta;
-  if(v < 1) v = 1;
-  input.value = v;
-}
-
-function addShopToCart(shopId, btn){
-  const s = findShopById(shopId); if(!s) return;
-  const qtyInput = document.getElementById('qty-' + shopId);
-  const qty = Math.max(1, Number(qtyInput?.value || 1));
-  const existing = state.cart.find(c => c.id === s.id);
-  if(existing) existing.qty += qty;
-  else state.cart.push({ id: s.id, name: s.name, price: s.price, qty: qty });
-  saveState();
-  blink(btn);
-}
-
-function removeCartItem(index){
-  state.cart.splice(index,1);
-  saveState(); renderCart();
-}
-
-document.getElementById('clearCart')?.addEventListener('click', ()=>{
-  if(!confirm('Clear cart?')) return;
-  state.cart = []; saveState(); renderCart();
 });
-
-/* =========== GAS ===========
-   estimate and add tokens to cart
-*/
-function updateGasEstimate(){
-  const qty = Number(document.getElementById('gasQty')?.value || 1);
-  const price = Number(state.tokenPrice || CONFIG.TOKEN_PRICE);
-  document.getElementById('gasTotal').innerText = (qty * price);
-  document.getElementById('tokenPrice').innerText = price;
-}
-document.getElementById('gasQty')?.addEventListener('input', updateGasEstimate);
-
-document.getElementById('addGas')?.addEventListener('click', ()=>{
-  const qty = Number(document.getElementById('gasQty').value) || 1;
-  const id = 'gas-token';
-  const price = Number(state.tokenPrice || CONFIG.TOKEN_PRICE);
-  const existing = state.cart.find(c => c.id === id);
-  if(existing) existing.qty += qty;
-  else state.cart.push({ id: id, name: `Gas tokens (${qty} min)`, price: price, qty: qty });
-  saveState();
-  blink(document.getElementById('addGas'));
-});
-
-/* =========== CART & WHATSAPP ===========
-   Build message with items and totals then open wa.me link
-*/
-function toggleCartPanel(){
-  const panel = document.getElementById('cartPanel');
-  panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
-}
-
-function sendCartWhatsApp(){
-  if(state.cart.length === 0){ alert('Cart is empty'); return; }
-  let lines = [];
-  lines.push('Hello! I want to place an order from Unico Kitchen:');
-  lines.push('');
-  let total = 0;
-  state.cart.forEach(item => {
-    lines.push(`${item.name} x ${item.qty} — KES ${item.price * item.qty}`);
-    total += item.price * item.qty;
-  });
-  lines.push('');
-  lines.push(`Total: KES ${total}`);
-  window.open(`https://wa.me/${CONFIG.PHONE}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
-}
-
-/* WhatsApp icon click uses same sendCartWhatsApp */
-document.getElementById('icon-whatsapp')?.addEventListener('click', ()=> {
-  blink(document.getElementById('icon-whatsapp'));
-  sendCartWhatsApp();
-});
-
-/* =========== TABS (icons + tab elements) =========== */
-function setActiveIcon(tabName){
-  document.querySelectorAll('.icon-button').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
-}
-function switchTab(tabName){
-  // update top icon active state
-  setActiveIcon(tabName);
-  // update tab (if there are textual tabs)
-  document.querySelectorAll('[data-tab]').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
-  // show/hide panels
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
-  const panel = document.getElementById(tabName);
-  if(panel) panel.classList.remove('hidden');
-  window.scrollTo({ top:0, behavior:'smooth' });
-}
-// icon bar buttons act like tabs
-document.querySelectorAll('.icon-button[data-tab]').forEach(btn=>{
-  btn.addEventListener('click', ()=> switchTab(btn.dataset.tab));
-  btn.addEventListener('keydown', (e)=> { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); switchTab(btn.dataset.tab); } });
-});
-
-/* Also wire the textual tabs (if user clicks them) */
-document.querySelectorAll('.tab').forEach(t => {
-  t.addEventListener('click', ()=> {
-    const tabName = t.dataset.tab;
-    switchTab(tabName);
-  });
-  t.addEventListener('keydown', (e)=> { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); switchTab(t.dataset.tab); } });
-});
-
-/* =========== SHOP SEARCH & FILTER HOOKS =========== */
-document.getElementById('shopSearch')?.addEventListener('input', ()=> renderShop(currentFilter));
-let currentFilter = 'all';
-document.getElementById('filterAll')?.addEventListener('click', ()=>{ currentFilter='all'; renderShop(currentFilter); });
-document.getElementById('filterFood')?.addEventListener('click', ()=>{ currentFilter='food'; renderShop(currentFilter); });
-
-/* =========== HOOKS =========== */
-document.getElementById('openCartBtn')?.addEventListener('click', toggleCartPanel);
-document.getElementById('sendCart')?.addEventListener('click', sendCartWhatsApp);
-document.getElementById('sendOrderHeader')?.addEventListener('click', sendCartWhatsApp);
-document.getElementById('sendPlanHeader')?.addEventListener('click', ()=> { blink(document.getElementById('sendPlanHeader')); sendPlannedWhatsApp(); });
-
-/* =========== INIT =========== */
-function init(){
-  renderRecipes();
-  renderShop();
-  renderFridge();
-  renderCart();
-  renderCartCount();
-  updateGasEstimate();
-  document.getElementById('cartPanel').style.display = 'none';
-  switchTab('recipes');
-}
-init();
-
-/* =========== END =========== */
 </script>
+
 </body>
 </html>
+
+
 
